@@ -63,8 +63,8 @@ namespace TetrisStart
 
         //Default settings,values
         int searchDepth = 100;
-
-
+        bool allSpin = false;
+        bool tsd = false;
         public Form1()
         {
             InitializeComponent();
@@ -149,7 +149,7 @@ namespace TetrisStart
             else
             {
                 
-                MisaMino.Configure(newparams, true, true, false, searchDepth);
+                MisaMino.Configure(newparams, true, allSpin, tsd, searchDepth);
 
                 MoveWindow.Stop();
                 overlayArea = new Rectangle(overlay.Location.X,
@@ -589,6 +589,34 @@ namespace TetrisStart
                      TetrisStart.Board.garbage = Color.FromArgb(70, 70, 70);
                 heightBoard = 20;
             }
+        }
+
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!(allSpin))
+            {
+                allSpin = true;
+            }
+            else
+            {
+                
+                allSpin = false;
+            }
+            Debug.WriteLine(allSpin);
+        }
+
+        private void checkBox4_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!(tsd))
+            {
+                tsd = true;
+            }
+            else
+            {
+
+                tsd = false;
+            }
+            Debug.WriteLine(tsd);
         }
     }
 }
