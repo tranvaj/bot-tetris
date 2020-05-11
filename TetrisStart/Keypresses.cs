@@ -15,15 +15,16 @@ namespace TetrisStart
     {
         public static int delay = 17;
         public static int holddelay = 1000;
+        public static bool legitM = false;
         public Keypresses()
         {
             
         }
 
-        public static bool executeInstructions(string[] moves, int delayhold)
+        public static bool executeInstructions(string[] moves)
         {
-             
-             if(delayhold >= 18 && delayhold < 22)
+
+            /* if(delayhold >= 18 && delayhold < 22)
             {
                 holddelay = 1100;
             }
@@ -43,60 +44,72 @@ namespace TetrisStart
             {
                 holddelay = 720;
             }
-
+            */
+            
 
             bool holdme = false;
             string[] movd = moves;
             for (int i = 0; i < movd.Length; i++)
             {
+                if (legitM)
+                {
+                    Random rnd = new Random();
+
+                    dice = rnd.Next(30,50); // creates a number between 1 and 5
+
+                }
+                else
+                {
+                    dice = 0;
+                }
                 switch (movd[i])
                 {
                     case "NULL":
-                        Debug.WriteLine("NULL");
+                        //Debug.WriteLine("NULL");
                         continue;
                     case "L":
-                        Debug.WriteLine("L");
+                        //Debug.WriteLine("L");
                         SendLeft();
                         continue;
                     case "R":
-                        Debug.WriteLine("R");
+                        //Debug.WriteLine("R");
                         SendRight();
                         continue;
                     case "LL":
-                        Debug.WriteLine("LL");
+                        //Debug.WriteLine("LL");
                         HoldLeft();
                         continue;
                     case "RR":
-                        Debug.WriteLine("RR");
+                        //Debug.WriteLine("RR");
                         HoldRight();
                         continue;
                     case "D":
-                        Debug.WriteLine("D");
+                        //Debug.WriteLine("D");
                         SendDown();
                         continue;
                     case "DD":
-                        Debug.WriteLine("DD");
+                        //Debug.WriteLine("DD");
                         HoldDown();
                         continue;
                     case "LSPIN":
-                        Debug.WriteLine("LSPIN");
+                        //Debug.WriteLine("LSPIN");
                         RotateCounterClock();
                         continue;
                     case "RSPIN":
-                        Debug.WriteLine("RSPIN");
+                        //Debug.WriteLine("RSPIN");
                         RotateClock();
                         continue;
                     case "DROP":
-                        Debug.WriteLine("drop");
+                        //Debug.WriteLine("drop");
                         SendDrop();
                         continue;
                     case "HOLD":
-                        Debug.WriteLine("hold");
+                        //Debug.WriteLine("hold");
                         HoldPiece();
                         holdme = true;
                         continue;
                     default:
-                        Debug.WriteLine("BOOM");
+                        //Debug.WriteLine("BOOM");
                         break;
 
                 }
@@ -124,7 +137,7 @@ namespace TetrisStart
 
         public static void HoldLeft()
         {
-            for(int i = 0; i < 6; i++)
+            for(int i = 0; i < 7; i++)
             {
                 SendLeft();
             }
@@ -138,7 +151,7 @@ namespace TetrisStart
 
         public static void HoldRight()
         {
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 7; i++)
             {
                 SendRight();
             }
@@ -160,26 +173,34 @@ namespace TetrisStart
         public static void HoldDown()
         {
             Keyboard.KeyDown(Keys.Down);
-            Thread.Sleep(50);
+            Thread.Sleep(40);
             Keyboard.KeyUp(Keys.Down);
             Thread.Sleep(delay);
 
         }
-        public static void RotateCounterClock()
+        public static int dice = 0;
+            
+    //Form1.legit
+    public static void RotateCounterClock()
         {
+           
+            Thread.Sleep(dice);
+
             Keyboard.KeyDown(Keys.Y);
-            Thread.Sleep(delay);
+            Thread.Sleep(delay + dice);
             Keyboard.KeyUp(Keys.Y);
-            Thread.Sleep(delay);
+            Thread.Sleep(delay + dice);
 
 
         }
         public static void RotateClock()
         {
+            
+            Thread.Sleep(dice);
             Keyboard.KeyDown(Keys.Up);
-            Thread.Sleep(delay);
+            Thread.Sleep(delay +  dice);
             Keyboard.KeyUp(Keys.Up);
-            Thread.Sleep(delay);
+            Thread.Sleep(delay + dice);
 
 
         }

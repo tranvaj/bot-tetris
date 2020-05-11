@@ -13,7 +13,7 @@ namespace TetrisStart
     public partial class Form2 : Form
     {
         int blockWidth = Form1.blockSize*10;
-        int blockHeight = Form1.blockSize*20;
+        int blockHeight = Form1.blockSize*Form1.heightBoard;
         private bool isDragged = false;
         private Point moveStartPoint;   
         public Form2()

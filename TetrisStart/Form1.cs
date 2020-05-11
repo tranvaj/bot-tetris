@@ -28,16 +28,17 @@ namespace TetrisStart
         private Rectangle capturerArea;
         private Rectangle nextPieceArea;
         public static int blockSize = 32;
+        
         int pieceNext = 3;
 
         public static int[] queue = { };
-        public int heightBoard = 20;
+        public static int heightBoard = 21;
         public int currentPiece = 99;
         public int previousPiece = 99;
         public static int? hold = null;
         public int[,] tetrisMap;
         public bool holdAllowed = true;
-        public int maxBuildHeight = 10;
+        public int maxBuildHeight = 21;
         /*
            public int heightBoard = 20;
           public int currentPiece = 99;
@@ -58,7 +59,9 @@ namespace TetrisStart
         public string[] previousInstructions = { "zzz" };
 
         //bool loadCurrent = true;
-        public static MisaMinoParameters newparams = new MisaMinoParameters(13, 9,17, 10, 29,25, 39, 2, 12, 19, 7, 24, 21, 16, 1, 19, 0, 30,0,24,0);
+        //public static MisaMinoParameters newparams = new MisaMinoParameters(16, 9,11, 23,20,1, 39, 2, 12, 19, 7, 24, 32, 16, 1, 19, 500, 0,63,0,100);
+       public static MisaMinoParameters newparams = new MisaMinoParameters(13, 9, 17, 10, 29, 25, 39, 2, 12, 19, 7, 24, 21, 16, 1, 19, 0, 30, 0, 24, 100);
+
         bool isLocked = true;
 
         //Default settings,values
@@ -89,7 +92,7 @@ namespace TetrisStart
             textBox2.Text = blockSize.ToString();
             textBox3.Text = pieceNext.ToString();
         }
-
+        int pieceNext2;
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -111,6 +114,10 @@ namespace TetrisStart
                 MessageBox.Show("Wrong value input.");
 
             }
+            else
+            {
+                pieceNext2 = pieceNext;
+            }
 
             if (Int32.Parse(textBox2.Text) % 2 == 0)
             {
@@ -118,9 +125,12 @@ namespace TetrisStart
                     MessageBox.Show("Wrong value input.");
 
                 }
+                else
                 {
                     overlay.Width = blockSize * 10;
-                    overlay.Height = blockSize * 20;
+                    overlay.Height = blockSize * heightBoard;
+                    //Board.setTetrisFieldHeight(heightBoard);
+                    
                    // nextPieceChecker.Width = blockSize * 5;
                     //nextPieceChecker.Height = blockSize * 3;
                 }
@@ -149,6 +159,8 @@ namespace TetrisStart
             else
             {
                 
+               
+
                 MisaMino.Configure(newparams, true, allSpin, tsd, searchDepth);
 
                 MoveWindow.Stop();
@@ -203,12 +215,24 @@ namespace TetrisStart
         //List<Instruction> misaInstr = new List<Instruction>(15);
         private void checkIfReady()
         {
-            //int imageDetectPiece;
+            //legit mode
+            if (legit)
+            {
+                Random rnd = new Random();
 
+                int dice = rnd.Next(1, pieceNext2); // creates a number between 1 and 5
+                pieceNext = dice;
+                Debug.WriteLine(pieceNext);
+
+            }
+
+
+
+            
             using (Bitmap bmp = ScreenCap.Grab(overlayArea))
             {
                 tetrisBoard.GetGrid(bmp);
-                tetrisMap = TetrisStart.Board.tetrisField;
+                               tetrisMap = TetrisStart.Board.tetrisField;
                 Board.Text = TetrisStart.Board.Print2DArray(TetrisStart.Board.tetrisField);
 
             }
@@ -228,8 +252,9 @@ namespace TetrisStart
                 currentPiece != PerfectClear.LastSolution[0].Piece, ref spinUsed, out success
                                
                 );*/
-            MisaMino.FindMove(queue, currentPiece, hold, heightBoard, tetrisMap, 0, 0, 0);
 
+            MisaMino.FindMove(queue, currentPiece, hold, maxBuildHeight, tetrisMap, TetrisStart.Board.combo, 0, 0);
+            //label10.Text = currentPiece.ToString() + "\n" +heightBoard ;
 
             fromNextPiece = queue[0];
             here:
@@ -238,15 +263,15 @@ namespace TetrisStart
         }
             private void timer1_Tick(object sender, EventArgs e)
             {
-            
 
-            using (Bitmap bmp = ScreenCap.Grab(overlayArea))
-            {
-                tetrisBoard.GetGrid(bmp);
-                tetrisMap = TetrisStart.Board.tetrisField;
-                Board.Text = TetrisStart.Board.Print2DArray(TetrisStart.Board.tetrisField);
 
-            }
+            /*   using (Bitmap bmp = ScreenCap.Grab(overlayArea))
+               {
+                   tetrisBoard.GetGrid(bmp);
+                   tetrisMap = TetrisStart.Board.tetrisField;
+                   Board.Text = TetrisStart.Board.Print2DArray(TetrisStart.Board.tetrisField);
+
+               }*/
         }
 
 
@@ -309,6 +334,7 @@ namespace TetrisStart
                         }
                         */
             //label4.Text = Board.Print2DArray(Board.FlipArray(Board.capturerField));
+            
             if (shouldStart)
                 {
                     //gameStarted = true;
@@ -318,6 +344,15 @@ namespace TetrisStart
                 MisaMino_Finished();
                 //PerfectClear_Finished();     
                 HELPMELOL(MisaMino.LastSolution.Instructions);
+                using (Bitmap bmp = ScreenCap.Grab(overlayArea))
+                {
+                    tetrisBoard.GetGrid(bmp);
+                    tetrisBoard.getCombo();
+                    comboaa.Text = TetrisStart.Board.combo.ToString() + " current:" + TetrisStart.Board.currentAmount + "rpevious " + TetrisStart.Board.previousAmount;
+                    tetrisMap = TetrisStart.Board.tetrisField;
+                    Board.Text = TetrisStart.Board.Print2DArray(TetrisStart.Board.tetrisField);
+
+                }
 
             }
             else
@@ -394,9 +429,19 @@ namespace TetrisStart
 
         private void HELPMELOL(List<Instruction> instruct)
                {
-                   int xdelay = MisaMino.LastSolution.FinalY;
+            //int xdelay = MisaMino.LastSolution.FinalY;
+            //bool xdelay = 0;
+            /* if (legit)
+             {
+                 Random rnd = new Random();
 
-                   if (Keypresses.executeInstructions(getInstructions(instruct),xdelay) == true)
+                 int dice = rnd.Next(30, 80); // creates a number between 1 and 5
+                 xdelay = dice;
+                 Debug.WriteLine(xdelay);
+
+             }*/
+
+            if (Keypresses.executeInstructions(getInstructions(instruct)) == true)
                    {
                        hold = currentPiece;
 
@@ -563,6 +608,7 @@ namespace TetrisStart
             bool jstrison = TetrisStart.Board.jstris;
             if (!(jstrison))
               {
+                TetrisStart.Board.setTetrisFieldHeight(20);
                 TetrisStart.Board.jstris = true;
                 TetrisStart.Board.lightBlue = Color.FromArgb(15, 155, 215);
                 TetrisStart.Board.pink = Color.FromArgb(175, 41, 138);
@@ -573,10 +619,12 @@ namespace TetrisStart
                 TetrisStart.Board.green = Color.FromArgb(89, 177, 1);
                 TetrisStart.Board.red = Color.FromArgb(215, 15, 55);
                 TetrisStart.Board.garbage = Color.FromArgb(153, 153, 153);
-                heightBoard = 19;
+                heightBoard = 20;
+                maxBuildHeight = 19;
             }
             else
             {
+                TetrisStart.Board.setTetrisFieldHeight(21);
                 TetrisStart.Board.jstris = false;
                  TetrisStart.Board.lightBlue = Color.FromArgb(61, 191, 144);
                 TetrisStart.Board.pink = Color.FromArgb(188, 84, 173);
@@ -587,7 +635,8 @@ namespace TetrisStart
                      TetrisStart.Board.green = Color.FromArgb(131, 175, 58);
                   TetrisStart.Board.red = Color.FromArgb(203, 88, 94);
                      TetrisStart.Board.garbage = Color.FromArgb(70, 70, 70);
-                heightBoard = 20;
+                heightBoard = 21;
+                maxBuildHeight = 21;
             }
         }
 
@@ -617,6 +666,22 @@ namespace TetrisStart
                 tsd = false;
             }
             Debug.WriteLine(tsd);
+        }
+         bool legit = false;
+        private void checkBox5_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!(legit))
+            {
+                legit = true;
+                Keypresses.legitM = true;
+            }
+            else
+            {
+                legit = false;
+                Keypresses.legitM = false;
+            }
+            Debug.WriteLine(legit);
+
         }
     }
 }

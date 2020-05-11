@@ -56,7 +56,7 @@ namespace TetrisStart
 
         private static void executeInstructions(int xdelay)
         {
-            if (Keypresses.executeInstructions(getInstructions(), xdelay))
+            if (Keypresses.executeInstructions(getInstructions()))
             {
                 holdPiece = currentPiece;
 

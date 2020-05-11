@@ -53,6 +53,9 @@
             this.label9 = new System.Windows.Forms.Label();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.comboaa = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Board
@@ -77,6 +80,7 @@
             // 
             // timer1
             // 
+            this.timer1.Interval = 50;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // label2
@@ -278,11 +282,43 @@
             this.checkBox4.UseVisualStyleBackColor = true;
             this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
             // 
+            // checkBox5
+            // 
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.Location = new System.Drawing.Point(331, 146);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(79, 17);
+            this.checkBox5.TabIndex = 25;
+            this.checkBox5.Text = "Legit Mode";
+            this.checkBox5.UseVisualStyleBackColor = true;
+            this.checkBox5.CheckedChanged += new System.EventHandler(this.checkBox5_CheckedChanged);
+            // 
+            // comboaa
+            // 
+            this.comboaa.AutoSize = true;
+            this.comboaa.Location = new System.Drawing.Point(284, 37);
+            this.comboaa.Name = "comboaa";
+            this.comboaa.Size = new System.Drawing.Size(39, 13);
+            this.comboaa.TabIndex = 26;
+            this.comboaa.Text = "combo";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(707, 146);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(41, 13);
+            this.label10.TabIndex = 27;
+            this.label10.Text = "label10";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(521, 482);
+            this.ClientSize = new System.Drawing.Size(1009, 482);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.comboaa);
+            this.Controls.Add(this.checkBox5);
             this.Controls.Add(this.checkBox4);
             this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.label9);
@@ -305,7 +341,6 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Board);
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "Form1";
             this.ShowIcon = false;
             this.Text = "tetris hack free download 2008 100% working        nuva#9232";
@@ -343,6 +378,9 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.Label comboaa;
+        private System.Windows.Forms.Label label10;
     }
 }
 

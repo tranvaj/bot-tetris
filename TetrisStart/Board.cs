@@ -13,7 +13,7 @@ namespace TetrisStart
     class Board
     {
 
-        public static int[,] tetrisField = new int[10, 20];
+        public static int[,] tetrisField = new int[10, Form1.heightBoard];
         public static int[,] capturerField = new int[10, 2];
         public int blockSize;
         public Bitmap bmp;
@@ -23,7 +23,10 @@ namespace TetrisStart
             bmp = bmp2;
         }
 
-
+        public static void setTetrisFieldHeight(int a)
+        {
+            tetrisField = new int[10, a];
+        }
         public static int[,] FlipArray(int[,] tetrisField)
         {
             int[,] arrayToFlip = tetrisField;
@@ -60,8 +63,36 @@ namespace TetrisStart
             return lol;
         }
 
-       
-
+        public static int combo = 0;
+        public static int previouscombo = 0;
+        public static int currentAmount = 0;
+        public static int previousAmount = 0;
+        public void getCombo() {
+            int b = 0;
+            foreach(int item in tetrisField)
+            {
+                if(item == 100) 
+                {
+                    b++;
+                }
+            }
+            previouscombo = combo;
+            previousAmount = currentAmount;
+            currentAmount = b;
+          
+            if(previousAmount > currentAmount)
+            {
+                combo++;
+            }
+            /* else if(previousAmount <= currentAmount)
+             {
+                 combo = 0;
+             }*/
+             if((currentAmount - previousAmount) > 0)
+            {
+                combo = 0;
+            }
+        }
         public void GetGrid(Bitmap tetrisBmp)
         {
 
@@ -149,7 +180,7 @@ namespace TetrisStart
                      
                         if (InList(pixel))
                         {
-                            Debug.WriteLine(pixel.ToString());
+                            //Debug.WriteLine(pixel.ToString());
                             return getIndexByRBG(pixel);
 
                             //goto here;
