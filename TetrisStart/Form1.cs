@@ -59,8 +59,15 @@ namespace TetrisStart
         public string[] previousInstructions = { "zzz" };
 
         //bool loadCurrent = true;
+        //ultra
         //public static MisaMinoParameters newparams = new MisaMinoParameters(16, 9,11, 23,20,1, 39, 2, 12, 19, 7, 24, 32, 16, 1, 19, 500, 0,63,0,100);
-       public static MisaMinoParameters newparams = new MisaMinoParameters(13, 9, 17, 10, 29, 25, 39, 2, 12, 19, 7, 24, 21, 16, 1, 19, 0, 30, 0, 24, 100);
+        //normal
+        //public static MisaMinoParameters newparams = new MisaMinoParameters(13, 9, 17, 10, 29, 25, 39, 2, 12, 19, 7, 24, 21, 16, 1, 19, 0, 30, 0, 24, 100);
+        //normal+b2b
+        //public static MisaMinoParameters newparams = new MisaMinoParameters(16,9,11,17,17,25,39,2,12,19,7,24,18,7,14,19,99,14,19,0,0);
+        //    idk  
+        public static MisaMinoParameters newparams = new MisaMinoParameters(13, 9, 17, 10, 29, 25, 39, 2, 12, 19, 7, 24, 21, 16, 1, 19, 99, 30, 0,24, 100);
+
 
         bool isLocked = true;
 
@@ -253,7 +260,8 @@ namespace TetrisStart
                                
                 );*/
 
-            MisaMino.FindMove(queue, currentPiece, hold, maxBuildHeight, tetrisMap, TetrisStart.Board.combo, 0, 0);
+            MisaMino.FindMove(queue, currentPiece, hold, maxBuildHeight, tetrisMap, TetrisStart.Board.combo,b2b, 0);
+
             //label10.Text = currentPiece.ToString() + "\n" +heightBoard ;
 
             fromNextPiece = queue[0];
@@ -305,6 +313,8 @@ namespace TetrisStart
             return lol;
             
         }
+        public static int b2b = 0;
+
         private void timer2_Tick(object sender, EventArgs e)
         {
 
@@ -353,6 +363,8 @@ namespace TetrisStart
                     Board.Text = TetrisStart.Board.Print2DArray(TetrisStart.Board.tetrisField);
 
                 }
+                b2b = MisaMino.LastSolution.B2B;
+                backtoback.Text = "b2b: " + b2b.ToString();
 
             }
             else
@@ -371,7 +383,6 @@ namespace TetrisStart
 
 
         }
-
 
 
       
@@ -681,6 +692,11 @@ namespace TetrisStart
                 Keypresses.legitM = false;
             }
             Debug.WriteLine(legit);
+
+        }
+
+        private void backtoback_Click(object sender, EventArgs e)
+        {
 
         }
     }

@@ -56,6 +56,7 @@
             this.checkBox5 = new System.Windows.Forms.CheckBox();
             this.comboaa = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.backtoback = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Board
@@ -311,11 +312,22 @@
             this.label10.TabIndex = 27;
             this.label10.Text = "label10";
             // 
+            // backtoback
+            // 
+            this.backtoback.AutoSize = true;
+            this.backtoback.Location = new System.Drawing.Point(133, 110);
+            this.backtoback.Name = "backtoback";
+            this.backtoback.Size = new System.Drawing.Size(25, 13);
+            this.backtoback.TabIndex = 28;
+            this.backtoback.Text = "b2b";
+            this.backtoback.Click += new System.EventHandler(this.backtoback_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1009, 482);
+            this.Controls.Add(this.backtoback);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.comboaa);
             this.Controls.Add(this.checkBox5);
@@ -381,6 +393,7 @@
         private System.Windows.Forms.CheckBox checkBox5;
         private System.Windows.Forms.Label comboaa;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label backtoback;
     }
 }
 
