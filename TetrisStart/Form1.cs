@@ -66,7 +66,7 @@ namespace TetrisStart
         //normal+b2b
         //public static MisaMinoParameters newparams = new MisaMinoParameters(16,9,11,17,17,25,39,2,12,19,7,24,18,7,14,19,99,14,19,0,0);
         //    idk  
-        public static MisaMinoParameters newparams = new MisaMinoParameters(13, 9, 17, 10, 29, 25, 39, 2, 12, 19, 7, 24, 21, 16, 1, 19, 99, 30, 0,24, 100);
+        public static MisaMinoParameters newparams = new MisaMinoParameters(13, 9, 17, 10, 29, 25, 39, 2, 12, 19, 7, 24, 21, 16, 1, 19, 99, 30, 0,24,0);
 
 
         bool isLocked = true;
@@ -103,6 +103,25 @@ namespace TetrisStart
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (radioButton1.Checked)
+            {
+                newparams = new MisaMinoParameters(13, 9, 17, 10, 29, 25, 39, 2, 12, 19, 7, 24, 21, 16, 1, 19, 99, 30, 0, 24, 0);
+                label11.Text = "tspin + b2b";
+                //MessageBox.Show("1");
+            }
+            if (radioButton2.Checked)
+            {
+                newparams = new MisaMinoParameters(13, 9, 17, 10, 29, 25, 39, 2, 12, 19, 7, 24, 21, 16, 1, 19, 99, 30, 0, 24, 100);
+                label11.Text = "tspin + b2b + 4w";
+                //MessageBox.Show("2");
+            }
+            if (radioButton3.Checked)
+            {
+                newparams = new MisaMinoParameters(16, 9,11, 23,20,1, 39, 2, 12, 19, 7, 24, 32, 16, 1, 19, 500, 0,63,0,100);
+                label11.Text = "ultra";
+                
+            }
+
             //load values from boxes
             // searchDepth = Intelligence.Text.To;
             if (!(Int32.TryParse(Intelligence.Text, out searchDepth)))
