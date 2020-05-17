@@ -332,10 +332,10 @@
             this.radioButton1.Checked = true;
             this.radioButton1.Location = new System.Drawing.Point(284, 67);
             this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(71, 17);
+            this.radioButton1.Size = new System.Drawing.Size(47, 17);
             this.radioButton1.TabIndex = 29;
             this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "tspin+b2b";
+            this.radioButton1.Text = "tspin";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
             // radioButton2

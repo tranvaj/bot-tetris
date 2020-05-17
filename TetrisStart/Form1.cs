@@ -105,19 +105,21 @@ namespace TetrisStart
         {
             if (radioButton1.Checked)
             {
-                newparams = new MisaMinoParameters(13, 9, 17, 10, 29, 25, 39, 2, 12, 19, 7, 24, 21, 16, 1, 19, 99, 30, 0, 24, 0);
-                label11.Text = "tspin + b2b";
+                newparams = new MisaMinoParameters(13, 9, 17, 10, 29, 25, 39, 2, 12, 19, 7, 24, 21, 16, 1, 19, 0, 30, 0, 24, 0);
+                label11.Text = "tspin";
                 //MessageBox.Show("1");
             }
             if (radioButton2.Checked)
             {
-                newparams = new MisaMinoParameters(13, 9, 17, 10, 29, 25, 39, 2, 12, 19, 7, 24, 21, 16, 1, 19, 99, 30, 0, 24, 100);
+                newparams = new MisaMinoParameters(13, 9, 17, 10, 29, 25, 39, 2, 12, 19, 7, 24, 21, 16, 1, 19, 30, 30, 0, 24, 100);
                 label11.Text = "tspin + b2b + 4w";
                 //MessageBox.Show("2");
             }
             if (radioButton3.Checked)
             {
-                newparams = new MisaMinoParameters(16, 9,11, 23,20,1, 39, 2, 12, 19, 7, 24, 32, 16, 1, 19, 500, 0,63,0,100);
+                newparams = new MisaMinoParameters(13, 9, 17, 10, 29, 25, 99, 2, 12, 19, 7, 24, 21, 16, 1, 19, 15, 30,0, 24, 150);
+
+                //newparams = new MisaMinoParameters(16, 9,11, 23,20,1, 39, 2, 12, 19, 7, 24, 32, 16, 1, 19, 500, 0,63,0,100);
                 label11.Text = "ultra";
                 
             }
