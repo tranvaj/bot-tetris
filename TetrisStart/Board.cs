@@ -83,6 +83,7 @@ namespace TetrisStart
             if(previousAmount > currentAmount)
             {
                 combo++;
+                
             }
             /* else if(previousAmount <= currentAmount)
              {
@@ -202,7 +203,34 @@ namespace TetrisStart
 
 
 
+        public int garbageDetect(Bitmap tetrisBmp)
+        {
+            
+            int blockSizeHalf = blockSize / 2;
+            int garbagelines = 0;
+            //Console.WriteLine("width:" + tetrisBmp.Width);
 
+
+            for (int j = 1; j <= 20; j++)
+                {
+                   
+                    Color pixel = tetrisBmp.GetPixel(tetrisBmp.Width/4, (blockSize * j) - blockSizeHalf);
+                    //Console.WriteLine("X: " + tetrisBmp.Width/4 + ",Y: " + ((blockSize * j) - blockSizeHalf));
+                //Console.WriteLine(pixel + " distance: " + getColorDistance(pixel, upcomgar));
+                    if (getColorDistance(pixel, upcomgar) < 85)
+                    {
+                        garbagelines++;
+                    //Console.WriteLine("increment: " + garbagelines);
+
+                }
+            }
+            
+
+           
+            //int lol = garbagelines / 2;
+            
+            return garbagelines;// 1;
+        }
 
 
 
@@ -215,6 +243,7 @@ namespace TetrisStart
         public static Color green = Color.FromArgb(131, 175, 58);
         public static Color red = Color.FromArgb(203, 88, 94);
         public static Color garbage = Color.FromArgb(70, 70, 70);
+        public static Color garbage2 = Color.FromArgb(106, 106, 106);
 
 
         //jstris
@@ -228,6 +257,7 @@ namespace TetrisStart
          public static Color red2 = Color.FromArgb(215, 15, 55);
          public static Color garbage2 = Color.FromArgb(153,153,153);*/
         public static Color red2 = Color.FromArgb(179, 58, 59);
+        public static Color upcomgar = Color.FromArgb(255,0,0);
 
         public static bool jstris = false;
         public static bool InList(Color rgb)
@@ -244,7 +274,9 @@ namespace TetrisStart
             ColorList.Add(red);
             ColorList.Add(red2);
             ColorList.Add(garbage);
-            foreach(var item in ColorList)
+            //ColorList.Add(upcomgar);
+            ColorList.Add(garbage2);
+            foreach (var item in ColorList)
             {
                 if(getColorDistance(item, rgb) > colorDistance)
                 {

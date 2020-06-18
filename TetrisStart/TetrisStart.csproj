@@ -41,12 +41,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>.\InputManager.dll</HintPath>
     </Reference>
-    <Reference Include="MisaMino">
-      <HintPath>x64\Debug\MisaMino.dll</HintPath>
+    <Reference Include="MisaMino, Version=0.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Downloads\Nová složka\Zetris-33\MisaMino.dll</HintPath>
     </Reference>
     <Reference Include="MisaMinoNET, Version=1.5.4.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>testtt\MisaMinoNET-master\MisaMinoNET\MisaMinoNET\bin\Debug\MisaMinoNET.dll</HintPath>
+      <HintPath>testtt\MisaMinoNET-master\MisaMinoNET\MisaMinoNET\bin\Release\MisaMinoNET.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

@@ -27,7 +27,7 @@ namespace TetrisStart
             MouseUp += overlay_MouseUp;
             MouseMove += overlay_MouseMove;
             Bounds = new Rectangle(0, 0, blockWidth, blockHeight);
-            Opacity = 0.2;
+            Opacity = 0.5;
             TopMost = true;
             Hide();
         }

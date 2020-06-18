@@ -55,7 +55,7 @@ namespace TetrisStart
                 {
                     Random rnd = new Random();
 
-                    dice = rnd.Next(30,50); // creates a number between 1 and 5
+                    dice = rnd.Next(25,50); // creates a number between 1 and 5
 
                 }
                 else
@@ -77,11 +77,30 @@ namespace TetrisStart
                         continue;
                     case "LL":
                         //Debug.WriteLine("LL");
-                        HoldLeft();
+                        //HoldLeft();
+                        if (legitM)
+                        {
+                            DASleft(85);
+
+                        }
+                        else
+                        {
+                            HoldLeft();
+                        }
                         continue;
                     case "RR":
                         //Debug.WriteLine("RR");
-                        HoldRight();
+                        //HoldRight();
+                        if (legitM)
+                        {
+                            DASright(85);
+
+
+                        }
+                        else
+                        {
+                            HoldRight();
+                        }
                         continue;
                     case "D":
                         //Debug.WriteLine("D");
@@ -113,7 +132,7 @@ namespace TetrisStart
                         break;
 
                 }
-                Thread.Sleep(100);
+                //Thread.Sleep();
             }
 
             return holdme;
@@ -149,8 +168,23 @@ namespace TetrisStart
 
         }
 
+        public static void DASleft(int das)
+        {
+            Keyboard.KeyDown(Keys.Left);
+            Thread.Sleep(das + dice);
+            Keyboard.KeyUp(Keys.Left);
+            Thread.Sleep(delay);
+        }
+        public static void DASright(int das)
+        {
+            Keyboard.KeyDown(Keys.Right);
+            Thread.Sleep(das + dice);
+            Keyboard.KeyUp(Keys.Right);
+            Thread.Sleep(delay);
+        }
         public static void HoldRight()
         {
+
             for (int i = 0; i < 7; i++)
             {
                 SendRight();
@@ -186,9 +220,9 @@ namespace TetrisStart
            
             Thread.Sleep(dice);
 
-            Keyboard.KeyDown(Keys.Y);
+            Keyboard.KeyDown(Keys.A);
             Thread.Sleep(delay + dice);
-            Keyboard.KeyUp(Keys.Y);
+            Keyboard.KeyUp(Keys.A);
             Thread.Sleep(delay + dice);
 
 
@@ -197,9 +231,9 @@ namespace TetrisStart
         {
             
             Thread.Sleep(dice);
-            Keyboard.KeyDown(Keys.Up);
+            Keyboard.KeyDown(Keys.S);
             Thread.Sleep(delay +  dice);
-            Keyboard.KeyUp(Keys.Up);
+            Keyboard.KeyUp(Keys.S);
             Thread.Sleep(delay + dice);
 
 

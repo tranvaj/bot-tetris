@@ -156,7 +156,7 @@ namespace MisaMinoNET {
                     Finished?.Invoke(solved);
 
                     abortWait?.Set();
-                
+               
             }
         }
 

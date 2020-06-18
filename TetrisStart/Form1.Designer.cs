@@ -61,6 +61,8 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.label11 = new System.Windows.Forms.Label();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Board
@@ -85,7 +87,7 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 50;
+            this.timer1.Interval = 1;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // label2
@@ -124,7 +126,7 @@
             // 
             // timer2
             // 
-            this.timer2.Interval = 10;
+            this.timer2.Interval = 1;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // label5
@@ -343,9 +345,9 @@
             this.radioButton2.AutoSize = true;
             this.radioButton2.Location = new System.Drawing.Point(284, 87);
             this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(91, 17);
+            this.radioButton2.Size = new System.Drawing.Size(71, 17);
             this.radioButton2.TabIndex = 30;
-            this.radioButton2.Text = "tspin+b2b+4w";
+            this.radioButton2.Text = "tspin+b2b";
             this.radioButton2.UseVisualStyleBackColor = true;
             // 
             // radioButton3
@@ -367,11 +369,33 @@
             this.label11.TabIndex = 32;
             this.label11.Text = "current setting";
             // 
+            // checkBox6
+            // 
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Location = new System.Drawing.Point(416, 146);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(54, 17);
+            this.checkBox6.TabIndex = 33;
+            this.checkBox6.Text = "4wide";
+            this.checkBox6.UseVisualStyleBackColor = true;
+            this.checkBox6.CheckedChanged += new System.EventHandler(this.checkBox6_CheckedChanged);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(378, 106);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(74, 13);
+            this.label12.TabIndex = 34;
+            this.label12.Text = "upcominggarb";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1009, 482);
+            this.ClientSize = new System.Drawing.Size(799, 470);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.checkBox6);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.radioButton3);
             this.Controls.Add(this.radioButton2);
@@ -447,6 +471,8 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.CheckBox checkBox6;
+        private System.Windows.Forms.Label label12;
     }
 }
 

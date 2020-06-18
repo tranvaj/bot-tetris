@@ -12,22 +12,24 @@ namespace TetrisStart
 {
     public partial class Form3 : Form
     {
-        int blockWidth = 32 * 10;
-        int blockHeight = 32 * 4;
+        int blockWidth = 16;
+        int blockHeight = Form1.blockSize * 20;
         private bool isDragged = false;
         private Point moveStartPoint;
         public Form3()
         {
             InitializeComponent();
-            BackColor = Color.Green;
+            this.MinimumSize = new Size(1, 1);
+            BackColor = Color.DeepPink;
             this.FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
             MouseDown += overlay_MouseDown;
             MouseUp += overlay_MouseUp;
             MouseMove += overlay_MouseMove;
             Bounds = new Rectangle(0, 0, blockWidth, blockHeight);
-            Opacity = 0.2;
+            Opacity = 0.5;
             TopMost = true;
+            //this.Width = 3;
             Hide();
         }
 
